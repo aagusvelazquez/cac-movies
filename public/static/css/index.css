@@ -1,0 +1,371 @@
+/* CSS 1 - Introducción al CSS */
+
+:root {
+    --primary-color: #9f3647;
+    --bg-color: #181419;
+    --secondary-color: #ffc098;
+    --third-color: #db4648;
+    --third-bis-color: #db4648f2;
+    --bg-input-color: #4f31572c;
+    --white-color: #fdf5ef;
+    /* fuentes */
+    --primary-font: 'Nunito', sans-serif;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+  
+/* Carril del scroll */
+::-webkit-scrollbar-track {
+    background-color: var(--bg-color);
+}
+   
+/* Almohadilla del scroll */
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+}
+  
+/* Almohadilla on hover */
+::-webkit-scrollbar-thumb:hover {
+    background:var(--third-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--white-color);
+}
+
+h2 {
+    color: var(--white-color);
+    font-size: 2rem;
+}
+
+hr{
+    border: 1px solid #9f3647;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+#logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.search-title {
+    color: var(--white-color);
+    font-size: 2rem;
+}
+
+.movie-item-img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+
+    transition: all 0.5s ease;
+}
+
+/*Repaso  CSS 2: Unidades de medida. Colores CSS.
+  Fondos en CSS. Fuentes y tipografías. 
+  Estilos para textos y listas. Íconos --------------------------*/
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--primary-font);
+}
+
+#banner {
+    background: linear-gradient(to right top, #0000008a, #0000008a), url('../img/banner-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+
+    color: var(--white-color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* 
+Repaso CSS 3 – PLAN DE ESTUDIOS: Modelo de caja y 
+posicionamiento. Modelo de caja y propiedades.
+Posicionamiento y visualización.  */
+
+/* Estilo al encabezado, agregar estilos por el selector de clase:
+color de fondo, color fuente, posición del 
+encabezado, ancho y z-index -------------------------------------------*/
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    width: 100%;
+
+    background-color: var(--primary-color);
+}
+
+#footer {
+    width: 100%;
+    height: 6em;
+    margin-top: 4em;
+
+    background-color: var(--primary-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header nav {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 0px 40px;
+    padding: 1.5rem 0;
+}
+
+.nav-links {
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upMain {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    border: 2px solid var(--white-color);
+    border-radius: 50%;
+    padding: .2em .45em;
+    color: var(--white-color);
+    cursor: pointer;
+}
+
+.nav-links li,
+.footer-links li {
+    margin-right: 20px;
+}
+
+.nav-links li a,
+.footer-links li a {
+    font-weight: bold;
+    font-size: 1.1rem;
+
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+
+    transition: box-shadow 0.3s;
+}
+
+.nav-links li a:hover,
+.footer-links li a:hover {
+    box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.3);
+    background-color: var(--primary-color);
+}
+
+.login-btn {
+    background-color: #181419;
+    color: var(--white-color);
+    border-radius: 5px;
+}
+
+.btn-cac {
+    background-color: var(--primary-color);
+    padding: .8rem 2rem;
+    border-radius: 10px;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    transition: box-shadow 0.3s;
+}
+
+.btn-cac:hover {
+    box-shadow: 0px 0px 11px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* posicionamos el contenedor de los titulos */
+.container {
+    max-width: 1200px;
+    /*el elemento nunca será más ancho que el valor especificado 
+    en max-width*/
+    margin: 0px auto;
+}
+
+/* alineamos el boton de Registrarse h1 h2 */
+.card-banner {
+    margin: 0px auto;
+    text-align: center;
+
+    width: 55%;
+}
+
+.card-banner h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.card-banner h2 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+/* estilos al form de busquedas */
+.input-search {
+    background-color: var(--bg-input-color);
+
+    border: none;
+    border-radius: 25px;
+
+    height: 50px;
+    width: 500px;
+    margin: 20px 0px;
+    padding: 0px 20px;
+
+    font-size: 1rem;
+    font-family: var(--primary-font);
+    color: var(--white-color);
+}
+
+.search-btn {
+    background-color: #181419;
+    border: 2px solid var(--white-color);
+    border-radius: 25px;
+
+    display: inline-block;
+
+    height: 50px;
+    margin: 20px 0px;
+    padding: 0px 20px;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--white-color);
+}
+
+
+#search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 6em 0em;
+}
+
+/* estilos a la seccion de tendencias */
+
+.popular-movies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    margin: .8em auto;
+    gap: 1em;
+
+}
+
+.popular-movies h2 {
+    font-size: 2.5em;
+
+}
+
+#list-popular {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    margin: 1em auto;
+    padding: 0em 5em;
+    gap: 2em;
+}
+
+.movies-grid {
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+}
+
+.movie-item-detail,
+.movie-item-detail-v2 {
+    width: 100%;
+
+    color: var(--white-color);
+    text-align: center;
+    font-weight: 700;
+}
+
+.movie-item-img:hover {
+    box-shadow: 0 0 30px #9f3648cd;
+    transform: scale(0.9);
+}
+
+/* estilos a las más aclamadas */
+.top-rated {
+    width: 80%;
+    margin: 10px auto 60px;
+    text-align: center;
+}
+
+.top-rated-title {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.movies-scroller {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0px 0px 40px 0px;
+}
+
+.movie-item-v2 {
+    border-radius: 25px;
+    width: 170px;
+    min-width: 170px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie-item-img-v2 {
+    border-radius: 5%;
+    width: 95%;
+    height: 95%;
+    object-fit: cover;
+}
