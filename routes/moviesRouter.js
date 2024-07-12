@@ -18,8 +18,7 @@ const router = express.Router();
 const movieController = require("../controllers/movieController")
 
 /* DEFINICIÓN DE LAS SOLICITUDES */
-// Petición del tipo GET / introduce las pelicuals en 'Tendencia'
-router.get(`/`, movieController.getTrendingMovies);
-
+// Petición del tipo GET '/' introduce las peliculas en 'Tendencia'
+router.get(`/`, movieController.getAllMovies);
 
 module.exports = router;
