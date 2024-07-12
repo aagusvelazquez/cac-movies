@@ -309,6 +309,11 @@ encabezado, ancho y z-index -------------------------------------------*/
     gap: 2em;
 }
 
+.movie-item {
+    width: 20%;
+    transition: all ease-in .5s;
+}
+
 .movies-grid {
     padding-bottom: 2em;
     margin-bottom: 2em;
@@ -323,9 +328,17 @@ encabezado, ancho y z-index -------------------------------------------*/
     font-weight: 700;
 }
 
-.movie-item-img:hover {
+.movie-item-detail-title {
+    text-transform: capitalize;
+    width: 100%;
+}
+
+.movie-item:hover {
+    transform: scale(1.1);
+}
+
+.movie-item:hover .movie-item-img {
     box-shadow: 0 0 30px #9f3648cd;
-    transform: scale(0.9);
 }
 
 /* estilos a las más aclamadas */

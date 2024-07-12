@@ -1,4 +1,24 @@
-
+/**
+ * Crearemos un servidor con el módulo express
+ * 1- Creamos archivo src/app.js
+ * 2- Creamos la estructura del proyecto: CAC-Movies/src/app.js
+ *                                        CAC-Movies/public/index.html
+ *                                        CAC-Movies/static/css/index.css y register.css
+ *                                        CAC-Movies/static/img
+ *                                        CAC-Movies/static/index.js
+ *                                        CAC-Movies/template/register.html
+ *                                        CAC-Movies/routes/movieRouter.js
+ *                                        CAC-Movies/controllers/movieController.js
+ *                                        CAC-Movies/db/db.js
+ * 3- nmp init -y . Crear script 'start'
+ * 4- npm install express --save
+ * 4- npm install mysql2 --save
+ * 5- Configuramos en orden:
+ * 5.1 - Codificamos app.js
+ * 5.2 - Codificamos movieRouter.js
+ * 5.3 - Codificamos movieController.js
+ * 5.4 - Codificamos db.js
+ **/
 
 // Importamos lo módulo express
 const express = require("express");
@@ -31,6 +51,9 @@ app.use(express.json());
  * 2° Parámetro -> el módulo enrutador que gestiona las subrutas
  */
 app.use("/movies", moviesRouter);
+
+// Configuración para servir archivos estáticos 
+app.use(express.static('public'));
 
 // Inicializamos al servidor
 app.listen(PORT, () => {console.log(`Servidor escuchando el puerto ${PORT}`)});

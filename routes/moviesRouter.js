@@ -18,23 +18,8 @@ const router = express.Router();
 const movieController = require("../controllers/movieController")
 
 /* DEFINICIÓN DE LAS SOLICITUDES */
-// Petición del tipo GET /movies/list
-router.get("/list", movieController.getAllMovies);
+// Petición del tipo GET / introduce las pelicuals en 'Tendencia'
+router.get(`/`, movieController.getTrendingMovies);
 
-// Petición del tipo GET - Ruta Paramétrica movies/1
-router.get("/:id", movieController.getMovieById);
-
-// Solicitud del tipo POST - Cargar película en el movies.json
-/** Una solicitud del tipo POST se utiliza para
- * crear un nuevo recursos en el servidor.
- * En este caso, recibimos una solicitud dentro de req
- */
-router.post("/create-movie", movieController.createMovie);
-
-// Solicitud del tipo PUT - Actualizar datos de una película ya cargada
-router.put("/modify/:id", movieController.updateMovie);
-
-// Solicitud del tipo DELETE - Borra película del movie.json
-router.delete("/delete/:id", movieController.deleteMovie)
 
 module.exports = router;

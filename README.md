@@ -28,15 +28,6 @@ CAC-Movies/
 - [Node.js](https://nodejs.org/)
 - [npm](https://www.npmjs.com/)
 
-## Instalación
-
-1. Clona el repositorio en tu máquina local:
-
-   ```bash
-   git clone https://github.com/tu-usuario/CAC-Movies.git
-   cd CAC-Movies
-
-
 ## Archivos Clave
 - app.js
 Configura y arranca el servidor con Express.
@@ -49,8 +40,6 @@ Contiene la lógica para responder a las consultas de películas.
 
 - public/static/index.js
 Maneja la conexión entre el frontend y el backend.
-
-## Uso
 
 ## Licencia
 Este proyecto está licenciado bajo la MIT License.
