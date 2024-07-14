@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso | CaC-Movies, películas y series online</title>
+    <!-- zona del favicon -->
+    <link rel="icon" href="./Favicon.ico" type="image/x-icon">
+    <!-- zona de scripts -->
+    <script src="https://kit.fontawesome.com/eae8fc4e25.js" crossorigin="anonymous"></script>
+    <!-- zona del css -->
+    <link rel="stylesheet" href="../static/css/register.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html">
+                    <i class="fas fa-film"></i>
+                    <span class="logo-texto">
+                        CAC - Movies
+                    </span>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="form-wrapper">
+            <h2>Ingreso</h2>
+            <form id="formLogin">
+                <div class="form-control">
+                    <label>Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="error" id="error-email"></div>
+                <div class="form-control">
+                    <label>Contraseña</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <button type="submit">Ingresar</button>
+                <div class="form-help">
+                    <a href="./login.html">¿Olvidaste tu contraseña?</a>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script src="../static/login.js"></script>
+</body>
+
+</html>

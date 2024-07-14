@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- vinculación con estilos y favicon -->
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <title>CAC-Movies</title>
+    <!-- vinculación con google-fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <!-- vinculación fontawesome -->
+    <script src="https://kit.fontawesome.com/eae8fc4e25.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <nav>
+            <!-- Logo -->
+            <div id="logo">
+                <a href="/">
+                    <i class="fas fa-film"></i>
+                    <span class="logo-text">CAC-Movies</span>
+                </a>
+            </div>
+            <!-- Hipervínculos del enú -->
+            <ul class="nav-links">
+                <li>
+                    <a href="./template/login.html" class="login-btn">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <span class="login-text">Cerrar Sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Contenido -->
+    <main>
+        <section id="main-section" class="d-flex">
+            <div class="user-data">
+                <h2>Mis Datos</h2>
+                <hr>
+                <form id="user-data" class="form-wrapper">
+                    <div class="form-control">
+                        <label>Nombre</label>
+                        <input type="text" disabled name="firstname" id="firstname">
+                    </div>
+                    <div class="form-control">
+                        <label>Apellido</label>
+                        <input type="text" disabled name="lastname" id="lastname">
+                    </div>
+                    <div class="form-control">
+                        <label>Email</label>
+                        <input type="email" disabled name="email" id="email">
+                    </div>
+                    <div class="form-control input">
+                        <label>Contraseña</label>
+                        <input id="password" disabled type="password">
+                        <div class="eye-icon-wrapper">
+                            <i class="eye-icon fa-regular fa-eye-slash"></i>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label id="label-birthdate">Fecha de Nacimiento</label>
+                        <input type="text" disabled name="birthdate" id="birthdate">
+                    </div>
+                    <div class="form-control">
+                        <label>Pais</label>
+                        <input type="text" disabled name="country" id="country">
+                    </div>
+                </form>
+            </div>
+            <div class="favorites-movies">
+                <h2>Mis Cosas</h2>
+                <div class="favorites-movies-container" id="favorite-items"></div>
+                <p class="hidden-text" id="hidden-text">Aún no has agregado nada a tus cosas. ¡Corré a mirar las <a href="../index.html#popular">Tendencias</a> ya!</p>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="footer-links">
+            <li>
+                <a href="">Términos y condiciones</a>
+            </li>
+            <li>
+                <a href="">Preguntas Frecuentes</a>
+            </li>
+            <li>
+                <a href="">Ayuda</a>
+            </li>
+        </ul>
+    </footer>
+    <!-- Zona del script -->
+    <script src="../static/home.js"></script>
+</body>
+
+</html>

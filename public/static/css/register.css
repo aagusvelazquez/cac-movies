@@ -26,7 +26,7 @@ body::before {
     opacity: 0.5;
     width: 100%;
     height: 100%;
-    background: url("../img/bg-register.jpg");
+    background: url("../img/series-fondo.webp");
     background-position: center;
     background-size: cover;
 }
@@ -40,6 +40,8 @@ nav {
     width: 100%;
     font-size: 1.5em;
     font-weight: bold;
+    background-color: var(--primary-color);
+    box-shadow: 0px 11px 21px 13px #000000c0;
 
 }
 
@@ -56,16 +58,18 @@ nav a img {
     position: absolute;
     left: 50%;
     top: 50%;
-    border-radius: 4px;
+    border-radius: 15px;
     padding: 20px 70px;
     width: 450px;
     transform: translate(-50%, -50%);
     background:rgba(42,42,42 ,1);
+    box-shadow: 0px 0px 21px 13px rgba(0,0,0,1);
 }
 
 .form-wrapper h2 {
     color: #fff;
     font-size: 2rem;
+    text-align: center;
 }
 
 .form-wrapper form {
@@ -140,7 +144,7 @@ form button {
     background-color: var(--primary-color);
     color:#FFF;
     font-weight: 500;
-    border-radius: 4px;
+    border-radius: 10px;
     border: none;
     outline: none;
     margin: 25px 0 10px;
@@ -181,6 +185,10 @@ form .terms input {
 
 form .form-terms :where(label, a) {
     font-size: 0.9rem;
+}
+
+#formLogin .form-help {
+    text-align: center;
 }
 
 .form-wrapper p a {
