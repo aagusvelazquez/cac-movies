@@ -13,14 +13,14 @@ async function getTrendingMovies() {
             div.classList.add("movie-item");
             // Inyectamos contenido a <div class="movie-item">
             div.innerHTML = `
-        <a href="#">
-            <img src="${movie.imagen}" alt="${movie.titulo}" class="movie-item-img">
-            <div class="movie-item-detail">
-                <p class="movie-item-detail-title">${movie.titulo}</p>
-                <p class="movie-item-detail-subtitle">${movie.estreno} - ${movie.calificacion} ⭐</p>
-            </div> 
-        </a>
-        `;
+            <a onclick="mostrarInfo(${movie.idPelicula})">
+                <img src="${movie.imagen}" alt="${movie.titulo}" class="movie-item-img">
+                <div class="movie-item-detail">
+                    <p class="movie-item-detail-title">${movie.titulo}</p>
+                    <p class="movie-item-detail-subtitle">${movie.estreno} - ${movie.calificacion} ⭐</p>
+                </div> 
+            </a>
+            `;
             // Inyectamos el contenido en el HTML
             moviesTrending.appendChild(div);
         });
@@ -49,7 +49,7 @@ async function getAcclaimedMovies() {
             div.classList.add("movie-item-v2");
             // Inyectamos contenido a <div class="movie-item-v2">
             div.innerHTML = `
-            <div class="wrapper">
+            <div class="wrapper" onclick="mostrarInfo(${movie.idPelicula})">
                 <img src="${movie.imagen}" alt="${movie.titulo}" class="movie-item-img-v2">
             </div>
             <div class="movie-item-detail-v2">
@@ -96,6 +96,46 @@ const dropdownMenu = document.querySelector('.dropdown-menu');
 dropdownToggle.addEventListener('click', () => {
     dropdownMenu.classList.toggle('show');
 });
+
+// JS para mostrar la info de la pelicula
+async function mostrarInfo(peliID) {
+    try {
+        // Obtenemos todas las pelicukas
+        const response = await fetch('/movies/');
+        const movies = await response.json();
+        // Buscamos la pelicula que coinbcida con la seleccionada
+        const movie = movies.find(movie => peliID === movie.idPelicula);
+        const modal = document.getElementById("movie-info");
+        console.log(movie);
+        // Insertamos la información en el modal
+        modal.innerHTML =
+        `<div class="modal-content">
+            <span class="close" onclick="cerrarModal()">
+            <i class="fa-solid fa-x"></i>
+            </span>
+            <img src="${movie.imagen}" alt="${movie.titulo}" class="modal-movie-img">
+            <div>
+                <h2>${movie.titulo}</h2>
+                <p>Dirigida por ${movie.director} - ${movie.estreno}</p>
+                <p>Elenco: ${movie.actores_principales}</p>
+                <p>${movie.sinopsis}</p>
+                <div class="modal-movie-buttons">
+                    <a href="${movie.trailer}" target="_blank" class="modal-movie-btn">Trailer</a>
+                    <button class="modal-movie-btn">Agregar a Mis Cosas</button>
+                </div>
+            </div>
+        </div>               
+        `;
+        modal.style.display = "block";
+    } catch (error) {
+        alert(error);
+    };
+};
+
+function cerrarModal() {
+    const modal = document.getElementById("movie-info");
+    modal.style.display = "none";
+};
 
 // JS para cerrar sesión
 document.getElementById("close-session").addEventListener('click', () => {

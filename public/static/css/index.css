@@ -447,6 +447,88 @@ encabezado, ancho y z-index -------------------------------------------*/
     transition: all 0.2s ease-in;
 }
 
-.show {
-    display: block;
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal .modal-content {
+    position: relative;
+    background-color: var(--bg-color);
+    margin: 10% auto; /* Agrega un margen superior para que el contenido se centre verticalmente */
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    width: 50%; /* Establece un ancho fijo para que el contenido se centre horizontalmente */
+    color: var(--white-color);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 20px;
+}
+
+.modal .modal-content h2 {
+    text-transform: capitalize;
+}
+
+.modal .modal-content .modal-movie-img {
+    width: 300px;
+}
+
+.modal .modal-content div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+}
+
+.modal .modal-content div p {
+    text-align: start;
+}
+
+.modal .modal-content div .modal-movie-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+
+    gap: 10px;
+}
+.modal .modal-content div .modal-movie-buttons .modal-movie-btn{
+    background-color: var(--primary-color);
+    padding: .8rem 2rem;
+    border-radius: 10px;
+    border: none;
+    
+    font-family: var(--primary-font);
+    text-decoration: none;
+    color: var(--white-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    transition: box-shadow 0.3s;
+}
+.modal .modal-content div .modal-movie-buttons .modal-movie-btn:hover {
+    box-shadow: 0px 0px 12px 2px rgba(255, 255, 255, 0.15);
+}
+.modal .modal-content .close {
+    color: var(--white-color);
+    position: absolute;
+    top:20px;
+    right: 20px;
+    font-size: 1em;
+    font-weight: bold;
+}
+.modal .modal-content .close:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+    cursor: pointer;
 }
