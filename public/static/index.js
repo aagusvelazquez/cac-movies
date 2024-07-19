@@ -75,6 +75,42 @@ document.getElementsByClassName("upMain")[0].addEventListener("click", () => {
     });
 });
 
+// JS que inserta el nombre del usuario en el nav
+const nombre = localStorage.getItem("nombre");
+
+if (nombre) {
+    const userName = document.getElementById("user-name");
+    const lblUser = document.getElementById("lbl-user-name");
+    const lblUserRegister = document.getElementById("lbl-user-register");
+    const lblUserLogin = document.getElementById("lbl-user-login");
+    lblUser.classList.remove("hidden");
+    userName.innerText = nombre;
+    lblUserRegister.classList.add("hidden");
+    lblUserLogin.classList.add("hidden");
+};
+
+// JS que muestra el menú desplegable del usuario
+const dropdownToggle = document.querySelector('.dropdown-toggle');
+const dropdownMenu = document.querySelector('.dropdown-menu');
+
+dropdownToggle.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('show');
+});
+
+// JS para cerrar sesión
+document.getElementById("close-session").addEventListener('click', () => {
+    // Borramos los datos del usuario del localStorage
+    localStorage.clear();
+
+    // Devolvemos a la normalidad el nav
+    const lblUser = document.getElementById("lbl-user-name");
+    const lblUserRegister = document.getElementById("lbl-user-register");
+    const lblUserLogin = document.getElementById("lbl-user-login");
+    lblUser.classList.add("hidden");
+    lblUserRegister.classList.remove("hidden");
+    lblUserLogin.classList.remove("hidden");
+});
+
 // Llamar a la función para obtener todas las películas al cargar la página
 document.addEventListener('DOMContentLoaded', getTrendingMovies);
 document.addEventListener('DOMContentLoaded', getAcclaimedMovies);

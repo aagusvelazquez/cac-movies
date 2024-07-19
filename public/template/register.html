@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro | CaC-Movies, películas y series online</title>
     <!-- zona del favicon -->
-    <link rel="icon" href="./Favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <!-- zona de scripts -->
     <script src="https://kit.fontawesome.com/eae8fc4e25.js" crossorigin="anonymous"></script>
     <!-- zona del css -->
@@ -17,7 +17,7 @@
     <header>
         <nav>
             <div class="logo">
-                <a href="../index.html">
+                <a href="/">
                     <i class="fas fa-film"></i>
                     <span class="logo-texto">
                         CAC - Movies
@@ -54,6 +54,7 @@
                     <label id="label-birthdate">Fecha de Nacimiento</label>
                     <input type="date" name="birthdate" id="birthdate">
                 </div>
+                <div class="error" id="error-birthdate"></div>
                 <div class="form-control">
                     <select name="country" id="country" class="form-select">
                         <option value="">País</option>
@@ -69,13 +70,14 @@
                         <option value="VE">Venezuela</option>
                     </select>
                 </div>
+                <div class="error" id="error-country"></div>
                 <div class="form-terms">
                     <div class="terms">
                         <input type="checkbox" id="terms">
                         <label for="terms">Acepto términos y condiciones</label>
                     </div>
                 </div>
-                <button type="submit">Registrarse</button>
+                <button id="registerBtn">Registrarse</button>
                 <div class="form-help">
                     <a href="./register.html">Necesitas ayuda?</a>
                 </div>

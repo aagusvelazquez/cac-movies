@@ -19,7 +19,35 @@ const getAllMovies = (req, res) => {
     });
 };
 
+// Petición del tipo POST - Carga un registro en la tabla "usuario" de la BBDD
+const createUser = (req, res) => {
+    // Desestructuramos la request 
+    const { nombre, apellido, email, password, nacimiento, pais } = req.body;
+    const sql = 'INSERT INTO cac_movies.usuario (nombre, apellido, email, password, nacimiento, pais) VALUES (?, ?, ?, ?, ?, ?)'; 0
+    // Envio de la consulta a la base de datos
+    db.query(sql, [nombre, apellido, email, password, nacimiento, pais], (err, result) => {
+        // Si sucede un error
+        if (err) throw err;
+        // Si todo sale bien
+        res.json({ mensaje: "¡Usuario cargado con éxito!" });
+    });
+};
+
+// Petición del tipo GET - Obtiene un registro de la tabla "usuario" de la BBDD
+const getUser = (req, res) => {
+    // Desestrucuramos la request
+    const { email, password } = req.query;
+    const sql = "SELECT * FROM cac_movies.usuario WHERE email = ? AND password = ?";
+    db.query(sql, [email, password], (err, result) => {
+        // Si sucede un error
+        if (err) throw err;
+        // Si todo sale bien
+        res.json(result);
+    });
+};
 
 module.exports = {
-    getAllMovies
+    getAllMovies,
+    createUser,
+    getUser
 };

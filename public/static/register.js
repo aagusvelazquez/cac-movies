@@ -1,60 +1,149 @@
-const formRegister = document.querySelector("#formRegister");
+const formRegister = document.getElementById("formRegister");
+const btnForm = document.getElementById("registerBtn");
+const soloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+const soloNumeros = /^[0-9]+$/;
+const emailValido = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-const clearValidations = () => {
+function clearValidations() {
     document.querySelector("#firstname").classList.remove('error');
     document.querySelector("#lastname").classList.remove('error');
     document.querySelector("#email").classList.remove('error');
     document.querySelector("#password").classList.remove('error');
-    document.querySelector("#error-firstname").textContent='';
-    document.querySelector("#error-lastname").textContent='';
-    document.querySelector("#error-email").textContent='';
-    document.querySelector("#error-password").textContent='';
+    document.querySelector("#birthdate").classList.remove('error');
+    document.querySelector("#country").classList.remove('error');
+    document.querySelector("#error-firstname").textContent = '';
+    document.querySelector("#error-lastname").textContent = '';
+    document.querySelector("#error-email").textContent = '';
+    document.querySelector("#error-password").textContent = '';
+    document.querySelector("#error-birthdate").textContent = '';
+    document.querySelector("#error-country").textContent = '';
+
+};
+
+function validarNombre() {
+    const firstname = document.querySelector("#firstname").value;
+
+    if (!firstname.trim()) {
+        document.querySelector("#firstname").classList.add('error')
+        document.querySelector("#error-firstname").textContent = 'Debe completar el campo Nombre';
+        return false; // Indica que la validación falló
+    } else if (!soloLetras.test(firstname)) {
+        document.querySelector("#firstname").classList.add('error')
+        document.querySelector("#error-firstname").textContent = 'Ingrese sólo letras';
+        return false; // Indica que la validación falló
+    };
+    return true; // Indica que la validación fue exitosa
+};
+
+function validarApellido() {
+    const lastname = document.querySelector("#lastname").value;
+
+    if (!lastname.trim()) {
+        document.querySelector("#lastname").classList.add('error')
+        document.querySelector("#error-lastname").textContent = 'Debe completar el campo Apellido';
+        return false; // Indica que la validación falló
+    } else if (!soloLetras.test(lastname)) {
+        document.querySelector("#lastname").classList.add('error')
+        document.querySelector("#error-lastname").textContent = 'Ingrese sólo letras';
+        return false; // Indica que la validación falló
+    };
+    return true; // Indica que la validación fue exitosa
+};
+
+function validarEmail() {
+    const email = document.querySelector("#email").value;
+
+    if (!email.trim()) {
+        document.querySelector("#email").classList.add('error')
+        document.querySelector("#error-email").textContent = 'Debe completar el campo Email';
+        return false; // Indica que la validación falló
+    } else if (!emailValido.test(email)) {
+        document.querySelector("#email").classList.add('error')
+        document.querySelector("#error-email").textContent = 'Ingrese un email válído';
+        return false; // Indica que la validación falló
+    };
+    return true; // Indica que la validación fue exitosa
+};
+
+function validarPassword() {
+    const password = document.querySelector("#password").value;
     
-}
-const validarFormulario = (event) => {
-    event.preventDefault();
-    clearValidations();
+    if (!password.trim()) {
+        document.querySelector("#error-password").textContent = 'Debe completar el campo contraseña';
+        document.querySelector("#password").classList.add('error')
+        return false; // Indica que la validación falló
+    } else if (password.length < 6 || password.length > 12) {
+        document.querySelector("#error-password").textContent = 'La contraseña debe contener entre 6 y 12 caracteres';
+        document.querySelector("#password").classList.add('error')
+        return false; // Indica que la validación falló
+    };
+    return true; // Indica que la validación fue exitosa
+};
 
-    const firstname = document.querySelector("#firstname");
-    const lastname = document.querySelector("#lastname");
-    const email = document.querySelector("#email");
-    const password = document.querySelector("#password");
+function validarNacimiento() {
+    const birthdate = document.querySelector("#birthdate").value;
 
-    let validation = true;
-    if(!firstname.value.trim()){
-        firstname.classList.add('error')
-        document.querySelector("#error-firstname").textContent='Debe completar el campo Nombre';
-        validation=false;
-    }
-    if(!lastname.value.trim()){
-        // alert("Los campos Nombre, Apellido, Email y Password son obligatorios")
-        document.querySelector("#error-lastname").textContent='Debe completar el campo Apellido';
-        lastname.classList.add('error')
-        validation=false;
-    }
-    if(!email.value.trim()){
-        // alert("Los campos Nombre, Apellido, Email y Password son obligatorios")
-        document.querySelector("#error-email").textContent='Debe completar el campo Email';
-        email.classList.add('error')
-        validation=false;
-    }
-    if(!password.value.trim()){
-        // alert("Los campos Nombre, Apellido, Email y Password son obligatorios")
-        document.querySelector("#error-password").textContent='Debe completar el campo contraseña';
-        password.classList.add('error')
-        validation=false;
-    }else if(password.value.length < 6 || password.value.length > 12){
-        document.querySelector("#error-password").textContent ='La contraseña debe contener entre 6 y 12 caracteres';
-        password.classList.add('error')
-        validation=false;
-    }
+    if (!birthdate.trim()) {
+        document.querySelector("#birthdate").classList.add('error')
+        document.querySelector("#error-birthdate").textContent = 'Debe selecciona una Fecha de Nacimiento';
+        return false; // Indica que la valdación falló
+    };
+    return true; // Indica que la validación fue exitosa
+};
 
-    if(validation){
-        formRegister.submit()
-    }else{
-        return false;
-    }
-}
+function validarPais() {
+    const country = document.querySelector("#country").value;
 
+    if (!country.trim()) {
+        document.querySelector("#country").classList.add('error')
+        document.querySelector("#error-country").textContent = 'Debe seleccionar un País';
+        return false; // Indica que la validación falló
+    };
+    return true; // Indica que la validación fue exitosa
+};
 
-formRegister.addEventListener('submit',validarFormulario);
+function validarFormulario() {
+    if (!validarNombre() || !validarApellido() || !validarEmail() ||
+    !validarPassword() || !validarNacimiento() || !validarPais()) {
+        return false; // Formulario incompleto o inválido
+    };
+    return true; // Formulario completo y válido
+};
+
+btnForm.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    if (validarFormulario()) {
+        const nombre = document.querySelector("#firstname").value;
+        const apellido = document.querySelector("#lastname").value;
+        const email = document.querySelector("#email").value;
+        const password = document.querySelector("#password").value;
+        const nacimiento = document.querySelector("#birthdate").value;
+        const pais = document.querySelector("#country").value;
+        
+        const user = { nombre, apellido, email, password, nacimiento, pais };
+    
+        try {
+            const response = await fetch('/movies/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            });
+    
+            if (response.ok) {
+                alert("¡Usuario creado con éxito!")
+                clearValidations();
+                formRegister.reset();
+                return;
+            } else {
+                alert("¡Error al crear el usuario!");
+            }
+        } catch (error) {
+            console.error('Error al crear el usuario:', error);
+            alert("¡Error al crear el usuario!");
+        };
+    };
+
+});

@@ -30,12 +30,24 @@
             <!-- Hipervínculos del enú -->
             <ul class="nav-links">
                 <li><a href="#popular">Tendencias</a></li>
-                <li><a href="./template/register.html">Registrarse</a></li>
-                <li>
+                <li id="lbl-user-register"><a href="./template/register.html">Registrarse</a></li>
+                <li id="lbl-user-login">
                     <a href="./template/login.html" class="login-btn">
                         <i class="fas fa-sign-in-alt"></i>
                         <span class="login-text">Iniciar Sesión</span>
                     </a>
+                </li>
+                <li class="hidden dropdown-toggle" id="lbl-user-name">
+                    ¡Hola <span id="user-name"></span>!
+                    <ul class="dropdown-menu">
+                        <li><a href="./template/home.html">Mis Cosas</a></li>
+                        <li>
+                            <a id="close-session">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                <span class="login-text">Cerrar Sesión</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
@@ -51,7 +63,7 @@
                 <h1>Películas y series ilimitadas en un solo lugar</h1>
                 <h2>Disfruta donde quieras. <br>
                     Cancela en cualquier momento.</h2>
-                <a href="./templates/register.html" class="btn-cac">Registrate</a>
+                <a href="./template/register.html" class="btn-cac">Registrate</a>
             </div>
         </section>
         <!-- search: sección que contiene un mensaje de búsqueda

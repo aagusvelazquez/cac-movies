@@ -21,4 +21,10 @@ const movieController = require("../controllers/movieController")
 // Petición del tipo GET '/' introduce las peliculas en 'Tendencia'
 router.get(`/`, movieController.getAllMovies);
 
+// Petición del tipo POST '/register' Crea un usuario
+router.post('/register', movieController.createUser);
+
+// Petición del tipo GET '/login' para que el usuario ingrese
+router.get('/login', movieController.getUser);
+
 module.exports = router;
