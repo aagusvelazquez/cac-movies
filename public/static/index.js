@@ -90,11 +90,11 @@ if (nombre) {
 };
 
 // JS que muestra el menú desplegable del usuario
-const dropdownToggle = document.querySelector('.dropdown-toggle');
+const dropdownToggle = document.getElementById('lbl-user-name');
 const dropdownMenu = document.querySelector('.dropdown-menu');
 
 dropdownToggle.addEventListener('click', () => {
-    dropdownMenu.classList.toggle('show');
+    dropdownMenu.classList.toggle('hidden');
 });
 
 // JS para mostrar la info de la pelicula
@@ -106,7 +106,6 @@ async function mostrarInfo(peliID) {
         // Buscamos la pelicula que coinbcida con la seleccionada
         const movie = movies.find(movie => peliID === movie.idPelicula);
         const modal = document.getElementById("movie-info");
-        console.log(movie);
         // Insertamos la información en el modal
         modal.innerHTML =
         `<div class="modal-content">
@@ -121,7 +120,7 @@ async function mostrarInfo(peliID) {
                 <p>${movie.sinopsis}</p>
                 <div class="modal-movie-buttons">
                     <a href="${movie.trailer}" target="_blank" class="modal-movie-btn">Trailer</a>
-                    <button class="modal-movie-btn">Agregar a Mis Cosas</button>
+                    <button class="modal-movie-btn" onclick="addMovie(${movie.idPelicula})">Agregar a Mis Cosas</button>
                 </div>
             </div>
         </div>               
@@ -135,6 +134,33 @@ async function mostrarInfo(peliID) {
 function cerrarModal() {
     const modal = document.getElementById("movie-info");
     modal.style.display = "none";
+};
+
+// Función para agregar a 'Mis Cosas' las películas
+async function addMovie(peliID) {
+    let email = localStorage.getItem("email");
+    let idPelicula = peliID;
+
+    const movieFavorite = { email, idPelicula };
+
+    try {
+        const response= await fetch('/movies/add-my-things', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(movieFavorite)
+        });
+        if (!response) {
+            alert('Error al agregar la película.');
+        } else {
+            alert('Se agregado la película a "Mis Cosas".');
+        }
+    } catch (error) {
+        console.error('Error al agregar la película: ', error);
+        alert('Error al agregar la película: '+ error)
+    };
+
 };
 
 // JS para cerrar sesión

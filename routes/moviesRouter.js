@@ -27,4 +27,10 @@ router.post('/register', movieController.createUser);
 // Petición del tipo GET '/login' para que el usuario ingrese
 router.get('/login', movieController.getUser);
 
+// Peticion del tipo POST '/add-my-things' para agregar peliculas a 'Mis Cosas'
+router.post('/add-my-things', movieController.addMovie);
+
+// Petición del tipo GET '/my-things' en el home del usuario
+router.get('/my-things', movieController.getFavoriteMovies);
+
 module.exports = router;

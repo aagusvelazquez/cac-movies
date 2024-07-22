@@ -46,8 +46,37 @@ const getUser = (req, res) => {
     });
 };
 
+// Petición del tipo POST - Agrega películas a 'Mis Cosas'
+const addMovie = (req, res) => {
+    // Desestructuramos la request
+    const { email, idPelicula } = req.body;
+    const sql = "INSERT INTO favorito (usuario_email, pelicula_idPelicula) VALUES (?, ?)";
+    db.query(sql, [email, idPelicula], (err, result) => {
+        // Si sucede un error
+        if (err) throw err;
+        // Si todo sale bien
+        res.json({mensaje: "Pelicula agregada a 'Mis Cosas'"});
+    });
+};
+
+// Petición del tipo GET - Obtiene las peliculas agregadas a 'Mis Cosas'
+const getFavoriteMovies = (req, res) => {
+    // Desestructuramos la request
+    const { email } = req.query;
+    const sql = "SELECT f.usuario_email, p.idPelicula, p.titulo, p.director, p.estreno, p.calificacion, p.imagen FROM cac_movies.favorito f JOIN cac_movies.pelicula p ON f.pelicula_idPelicula = p.idPelicula WHERE f.usuario_email = ?;";
+    db.query(sql, [email], (err, result) => {
+        // Si sucede un error
+        if (err) throw err;
+        // Si todo sale bien
+        res.json(result);
+    });
+};
+
+
 module.exports = {
     getAllMovies,
     createUser,
-    getUser
+    getUser,
+    addMovie,
+    getFavoriteMovies
 };
