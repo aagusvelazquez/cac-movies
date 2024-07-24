@@ -72,11 +72,39 @@ const getFavoriteMovies = (req, res) => {
     });
 };
 
+// Petición del tipo DELETE - Elimina peliculas de 'Mis Cosas'
+const removeMovie = (req, res) => {
+    // Desestructuramos la request
+    const {email, idPelicula} = req.body;
+    const sql = "DELETE FROM cac_movies.favorito WHERE usuario_email = ? AND pelicula_idPelicula = ?;";
+    db.query(sql, [email, idPelicula], (err, result) => {
+        // Si sucede un error
+        if (err) throw err;
+        // Si todo sale bien
+        res.json({mensaje: "Pelicula eliminada de 'Mis Cosas'"});
+    });
+};
+
+// Peticion del tipo PUT - Modifica datos del usuario
+const modifyData = (req, res) => {
+    // Desestrucuramos la request
+    const { nombre, apellido, nacimiento, pais, email } = req.body;
+    // Creamos la consulta para modificar los datos
+    const sql = "UPDATE usuario SET nombre = ?, apellido = ?, nacimiento = ?, pais = ? WHERE email = ?";
+    db.query(sql, [ nombre, apellido, nacimiento, pais, email ], (err, result) => {
+        // Si sucede un error
+        if (err) throw err;
+        // Si todo sale bien
+        res.json({ mensaje: "¡Datos del usuario modificados con éxito!"});
+    });
+}   
 
 module.exports = {
     getAllMovies,
     createUser,
     getUser,
     addMovie,
-    getFavoriteMovies
+    getFavoriteMovies,
+    removeMovie,
+    modifyData
 };

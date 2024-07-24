@@ -1,6 +1,6 @@
+// Función para iniciar sesión
 const formRegister = document.getElementById("formLogin");
 const btnForm = document.getElementById("loginBtn");
-
 
 formRegister.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -20,14 +20,24 @@ formRegister.addEventListener('submit', async (e) => {
             localStorage.setItem("apellido", user[0].apellido);
             localStorage.setItem("email", user[0].email);
             localStorage.setItem("pais", user[0].pais);
-            
+            // Formatea la fecha a aaaa-mm-dd
+            const date = user[0].nacimiento;
+            const dateFormat = date.toString().split("T")[0];
+            localStorage.setItem("nacimiento", dateFormat);
+
+            // Formatea la fecha a aaaa-mm-dd
+
             formRegister.reset();
             window.location.href = '../index.html';
         } else {
             alert("¡Email o contraseña inválidos!");
+            location.reload();
+        return
         };
     } catch (error) {
         console.error('Email o contraseña inválidos:', error);
         alert("¡Email o contraseña inválidos!");
+        location.reload();
+        return
     };
 });

@@ -33,4 +33,10 @@ router.post('/add-my-things', movieController.addMovie);
 // Petición del tipo GET '/my-things' en el home del usuario
 router.get('/my-things', movieController.getFavoriteMovies);
 
+// Petición del tipo REMOVE '/remove-my-things' en el home del usuario
+router.delete('/remove-my-things', movieController.removeMovie);
+
+// Petición del tipo PUT '/modify-data' para modificar los datos del usuario
+router.put('/modify-data', movieController.modifyData);
+
 module.exports = router;

@@ -1,0 +1,77 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema cac_movies
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema cac_movies
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `cac_movies` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `cac_movies` ;
+
+-- -----------------------------------------------------
+-- Table `cac_movies`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cac_movies`.`usuario` (
+  `nombre` VARCHAR(45) NOT NULL,
+  `apellido` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `nacimiento` DATE NOT NULL,
+  `pais` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`email`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `cac_movies`.`pelicula`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cac_movies`.`pelicula` (
+  `idPelicula` INT NOT NULL AUTO_INCREMENT,
+  `titulo` VARCHAR(45) NOT NULL,
+  `director` VARCHAR(45) NOT NULL,
+  `estreno` INT(4) NOT NULL,
+  `calificacion` DECIMAL(3, 1) NOT NULL,
+  `sinopsis` VARCHAR(250) NOT NULL,
+  `trailer` VARCHAR(250) NOT NULL,
+  `actores_principales` VARCHAR(100) NOT NULL,
+  `imagen` VARCHAR(250) NOT NULL,
+  PRIMARY KEY (`idPelicula`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `cac_movies`.`favorito`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cac_movies`.`favorito` (
+  `idFavorito` INT NOT NULL AUTO_INCREMENT,
+  `usuario_email` VARCHAR(45) NOT NULL,
+  `pelicula_idPelicula` INT NOT NULL,
+  PRIMARY KEY (`idFavorito`),
+  INDEX `fk_favorito_usuario_idx` (`usuario_email` ASC) VISIBLE,
+  INDEX `fk_favorito_pelicula1_idx` (`pelicula_idPelicula` ASC) VISIBLE,
+  CONSTRAINT `fk_favorito_usuario`
+    FOREIGN KEY (`usuario_email`)
+    REFERENCES `cac_movies`.`usuario` (`email`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_favorito_pelicula1`
+    FOREIGN KEY (`pelicula_idPelicula`)
+    REFERENCES `cac_movies`.`pelicula` (`idPelicula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

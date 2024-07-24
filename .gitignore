@@ -6,8 +6,3 @@ package-lock.json
 # Editor directories and files
 .vscode/
 
-# Archivos extra
-Cláusulas de Ing Inversa BBDD MySQL.txt
-JSON de peliculas para Postman.txt
-ing_inversa_BBDD.png
-movie.json

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- vinculación con estilos y favicon -->
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <title>Modificar Datos | CAC-Movies</title>
+    <!-- vinculación con google-fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <!-- vinculación fontawesome -->
+    <script src="https://kit.fontawesome.com/eae8fc4e25.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <nav>
+            <!-- Logo -->
+            <div id="logo">
+                <a href="../index.html">
+                    <i class="fas fa-film"></i>
+                    <span class="logo-text">CAC-Movies</span>
+                </a>
+            </div>
+            <!-- Hipervínculos del enú -->
+            <ul class="nav-links">
+                <li>
+                    <a class="login-btn" id="cerrar-sesion">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <span class="login-text">Cerrar Sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Contenido -->
+    <main>
+        <section id="main-section" class="main-section">
+            <div class="user-data">
+                <h2>Mis Datos</h2>
+                <form class="form-data" id="user-data-form">
+                    <div class="form-label">
+                        <input type="text" id="user-nombre" name="user-data-form">
+                        <label for="user-nombre">Nombre:</label>
+                    </div>
+                    <div class="form-label">
+                        <input type="text" id="user-apellido" name="user-apellido">
+                        <label for="user-apellido">Apellido:</label>
+                    </div>
+                    <div class="form-label">
+                        <input type="email" id="user-email" name="user-email" disabled>
+                        <label for="user-email">Correo:</label>
+                    </div>
+                    <div class="form-label">
+                        <input type="date" id="user-nacimiento" name="user-nacimiento">
+                    </div>
+                    <div class="form-label">
+                        <select id="user-pais" name="user-pais">
+                            <option value="">País</option>
+                            <option value="AR">Argentina</option>
+                            <option value="BO">Bolivia</option>
+                            <option value="BR">Brasil</option>
+                            <option value="CH">Chile</option>
+                            <option value="CO">Colombia</option>
+                            <option value="EC">Ecuador</option>
+                            <option value="PY">Paraguay</option>
+                            <option value="PE">Perú</option>
+                            <option value="UY">Uruguay</option>
+                            <option value="VE">Venezuela</option>
+                        </select>
+                    </div>
+                    <button class="modify-btn" type="submit">Modificar Datos</button>
+                </form>
+            </div>
+        </section>
+        <div id="data-modal" class="modal"></div>
+    </main>
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="footer-links">
+            <li>
+                <a href="">Términos y condiciones</a>
+            </li>
+            <li>
+                <a href="">Preguntas Frecuentes</a>
+            </li>
+            <li>
+                <a href="">Ayuda</a>
+            </li>
+        </ul>
+    </footer>
+    <!-- Zona del script -->
+    <script src="../static/modify.js"></script>
+</body>
+
+</html>

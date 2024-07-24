@@ -154,6 +154,7 @@ async function addMovie(peliID) {
         if (!response) {
             alert('Error al agregar la película.');
         } else {
+            cerrarModal();
             alert('Se agregado la película a "Mis Cosas".');
         }
     } catch (error) {
